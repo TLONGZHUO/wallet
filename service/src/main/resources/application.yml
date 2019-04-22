@@ -1,0 +1,55 @@
+spring:
+  application:
+    name: WALLET-CLIENT
+  main:
+    allow-bean-definition-overriding: true
+  #热部署配置
+  devtools:
+    restart:
+      enabled: false
+    livereload:
+      enabled: false
+  #数据库连接池配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #        测试服外网链接
+    url: jdbc:mysql://rm-uf63nlx1kt89s802c6o.mysql.rds.aliyuncs.com:3306/tlongdbtest?useUnicode=true&characterEncoding=utf8&useSSL=false
+    #        测试服内网连接
+    #        url: jdbc:mysql://rm-uf63nlx1kt89s802c.mysql.rds.aliyuncs.com:3306/tlongdbtest?useUnicode=true&characterEncoding=utf8&useSSL=false
+    #        正私服外网链接
+    #        url: jdbc:mysql://rm-uf63nlx1kt89s802c6o.mysql.rds.aliyuncs.com:3306/tlongdb?useUnicode=true&characterEncoding=utf8&useSSL=false
+    #        正式服部署内网连接
+    #        url: jdbc:mysql://rm-uf63nlx1kt89s802c.mysql.rds.aliyuncs.com:3306/tlongdb?useUnicode=true&characterEncoding=utf8&useSSL=false
+    #        username: user
+    username: wangzhuo
+    #        password: mypassword
+    password: 900Tl900
+
+server:
+  port: 8086
+
+eureka:
+  client:
+    serviceUrl: #注册中心的注册地址
+      defaultZone: http://127.0.0.1:8088/eureka/
+  instance: #注册到admin
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: http://127.0.0.1:8089/actuator/health
+
+ribbon:
+  eureka:
+    enabled: true
+
+feign:
+  hystrix:
+    enabled: true
+
+# 在admin中允许扫描项目信息
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
