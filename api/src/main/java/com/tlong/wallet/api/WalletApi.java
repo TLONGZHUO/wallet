@@ -11,4 +11,5 @@ public interface WalletApi {
     @ApiOperation("普通单个文件上传")
     @GetMapping("/singleUpload")
     WalletBaseResultDto singleUpload();
+
 }

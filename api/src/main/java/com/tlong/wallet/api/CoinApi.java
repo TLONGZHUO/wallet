@@ -5,6 +5,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 /**
  * @Auther: wangzhuo
@@ -15,6 +16,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 public interface CoinApi {
 
     @ApiOperation("根据id查询用户信息")
-    @GetMapping("/findOne/{id}")
+    @PostMapping("/findOne/{id}")
     WalletBaseResultDto findOne(@PathVariable Long id);
 }

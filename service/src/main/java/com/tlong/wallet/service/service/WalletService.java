@@ -22,9 +22,15 @@ public class WalletService {
      * 测试文件上传
      */
     public WalletBaseResultDto singleUpload() {
-        OssBaseResultDto ossBaseResultDto = ossClient.singleUpload();
-        System.out.println(ossBaseResultDto.getDetail());
-        System.out.println("文件上传项目wallet");
+        OssBaseResultDto ossBaseResultDto = new OssBaseResultDto();
+        try {
+             ossBaseResultDto = ossClient.singleUpload();
+            System.out.println(ossBaseResultDto.getDetail());
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+//        System.out.println("文件上传项目wallet");
         WalletBaseResultDto baseResultDto = new WalletBaseResultDto();
         baseResultDto.setDetail(ossBaseResultDto.getDetail());
         return baseResultDto;
