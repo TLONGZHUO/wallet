@@ -1,0 +1,23 @@
+spring:
+  cloud:
+    config:
+      name: wallet
+      profile: dev
+      discovery:
+        enabled: true
+        service-id: CONFIG-CLIENT
+
+server:
+  port: 8086
+
+security:
+  username: admin
+  password: admin123456
+
+eureka:
+  client:
+    serviceUrl: #注册中心的注册地址
+      defaultZone: http://${security.username}:${security.password}@localhost:8761/eureka/
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    health-check-url-path: http://localhost:${server.port}/actuator/health

@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.tlong</groupId>
+        <groupId>com.jds</groupId>
         <artifactId>parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath/> <!-- lookup parent from repository -->
@@ -14,6 +14,7 @@
         <module>service</module>
     </modules>
 
+    <groupId>com.tlong</groupId>
     <artifactId>wallet</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>wallet</name>
@@ -23,7 +24,6 @@
     </properties>
 
     <dependencies>
-
     </dependencies>
 
     <build>

@@ -12,37 +12,39 @@ spring:
   #数据库连接池配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    #        测试服外网链接
-    url: jdbc:mysql://rm-uf63nlx1kt89s802c6o.mysql.rds.aliyuncs.com:3306/tlongdbtest?useUnicode=true&characterEncoding=utf8&useSSL=false
-    #        测试服内网连接
-    #        url: jdbc:mysql://rm-uf63nlx1kt89s802c.mysql.rds.aliyuncs.com:3306/tlongdbtest?useUnicode=true&characterEncoding=utf8&useSSL=false
-    #        正私服外网链接
-    #        url: jdbc:mysql://rm-uf63nlx1kt89s802c6o.mysql.rds.aliyuncs.com:3306/tlongdb?useUnicode=true&characterEncoding=utf8&useSSL=false
-    #        正式服部署内网连接
-    #        url: jdbc:mysql://rm-uf63nlx1kt89s802c.mysql.rds.aliyuncs.com:3306/tlongdb?useUnicode=true&characterEncoding=utf8&useSSL=false
-    #        username: user
-    username: wangzhuo
-    #        password: mypassword
-    password: 900Tl900
-
-server:
-  port: 8086
-
-eureka:
-  client:
-    serviceUrl: #注册中心的注册地址
-      defaultZone: http://127.0.0.1:8088/eureka/
-  instance: #注册到admin
-    leaseRenewalIntervalInSeconds: 10
-    health-check-url-path: http://127.0.0.1:8089/actuator/health
+    url: jdbc:mysql://47.106.255.139:3306/wxwz?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: password
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
 
 ribbon:
+  ###指的是建立连接所用的时间，适用于网络状况正常的情况下，两端连接所用的时间。
+  ReadTimeout: 55000
+  ###指的是建立连接后从服务器读取到可用资源所用的时间。
+  ConnectTimeout: 55000
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 0
   eureka:
     enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 55000
 
 feign:
   hystrix:
     enabled: true
+
 
 # 在admin中允许扫描项目信息
 management:

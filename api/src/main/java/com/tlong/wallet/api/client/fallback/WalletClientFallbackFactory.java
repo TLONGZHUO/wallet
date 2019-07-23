@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class WalletClientFallbackFactory implements FallbackFactory<WalletClient> {
-
     @Override
     public WalletClient create(Throwable throwable) {
         return new WalletClient() {
