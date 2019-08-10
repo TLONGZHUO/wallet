@@ -16,8 +16,12 @@ security:
 
 eureka:
   client:
+    fetch-registry: true
+    registry-fetch-interval-seconds: 5
     serviceUrl: #注册中心的注册地址
-      defaultZone: http://${security.username}:${security.password}@localhost:8761/eureka/
-  instance:
-    leaseRenewalIntervalInSeconds: 10
-    health-check-url-path: http://localhost:${server.port}/actuator/health
+      defaultZone: http://${security.username}:${security.password}@eureka-server:8761/eureka/
+      #      defaultZone: http://${security.username}:${security.password}@localhost:8761/eureka/
+      instance:
+        leaseRenewalIntervalInSeconds: 10
+        #        health-check-url-path: http://localhost:${server.port}/actuator/health
+        health-check-url-path: http://admin-server:${server.port}/actuator/health
